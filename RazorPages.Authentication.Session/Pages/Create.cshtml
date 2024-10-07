@@ -1,0 +1,52 @@
+﻿@page
+@model RazorPages.Authentication.Session.Pages.CreateModel
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <meta charset="utf-8" />
+    <title>Authorization</title>
+</head>
+<body>
+    @using (Html.BeginForm())
+    {
+        <div>
+            @if (this.HttpContext.Session.GetString("login")==null)
+            {
+                @Html.ValidationSummary(true,"")
+                <div>
+                    @Html.LabelFor(model=>model.login.UserName)
+                    <div>
+                        @Html.EditorFor(model=>model.login.UserName)
+                        @Html.ValidationMessageFor(model=>model.login.UserName,"")
+                    </div>
+                </div>
+
+                <div>
+                    @Html.LabelFor(model => model.login.Password)
+                    <div>
+                        @Html.PasswordFor(model => model.login.Password)
+                        @Html.ValidationMessageFor(model => model.login.Password, "")
+                    </div>
+                </div>
+
+                <div>
+                    <div>
+                        <input type="submit" value="Войти" />
+                    </div>
+                </div>
+            }
+            else
+            {
+                <div>
+                    <div>
+                        Entering Login & password is not required!
+                    </div>
+                    <a href="Index">Back to home page</a>
+                </div>
+            }
+        </div>
+    }
+</body>
+</html>

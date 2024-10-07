@@ -1,10 +1,28 @@
 ﻿@page
 @model IndexModel
-@{
-    ViewData["Title"] = "Home page";
-}
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://learn.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-</div>
+
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-with" />
+    <meta charset="utf-8" />
+    <title>Authorization</title>
+</head>
+<body>
+    @{
+        <div>
+            Hello, @this.HttpContext.Session.GetString("login")
+        </div>
+    }
+
+    <form method="post">
+        <div>
+            <input type="submit" value="Log out"/>
+        </div>
+    </form>
+    <div>
+        <a href="Create">To authorization page</a>
+    </div>
+</body>
+</html>

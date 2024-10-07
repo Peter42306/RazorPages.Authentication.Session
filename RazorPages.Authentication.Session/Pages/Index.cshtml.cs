@@ -5,16 +5,18 @@ namespace RazorPages.Authentication.Session.Pages
 {
     public class IndexModel : PageModel
     {
-        private readonly ILogger<IndexModel> _logger;
-
-        public IndexModel(ILogger<IndexModel> logger)
+        public IActionResult OnGet()
         {
-            _logger = logger;
+            if (HttpContext.Session.GetString("login")==null)
+            {
+                return RedirectToPage("Create");
+            }
+            return Page();
         }
 
-        public void OnGet()
+        public IActionResult OnPost()
         {
-
+            return RedirectToAction("Logout");
         }
     }
 }
